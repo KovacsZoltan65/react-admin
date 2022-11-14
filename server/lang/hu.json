@@ -1,0 +1,54 @@
+{
+    "users": "Felhasználók",
+    "name":"Név",
+    "functions":"Műveletek",
+    "contact": "Kapcsolat",
+    
+    "profile": "Profil",
+    "change_password": "Jelszó megváltoztatása",
+    "change": "Módosítás",
+    
+    "currencies": "Pénznemek",
+    "currency": "Pénznem",
+    
+    "countries": "Országok",
+    "country": "Ország",
+    
+    "login": "Belépés",
+    "register": "Regisztráció",
+    "create account": "Fiók létrehozása",
+    
+    "first_name": "Keresztnév",
+    "last_name": "Vezetéknév",
+    "email": "Email",
+    "your email": "Email címed",
+    "password": "Jelszó",
+    "confirm_password": "Jelszó megerősítése",
+    "status": "Státusz",
+    
+    "companies": "Cégek",
+    "company": "Cég",
+    "company_new": "Új cég",
+    "company_edit": "Cég szerkesztése",
+    "company_delete": "Cég törlése",
+    
+    "humans":"Dolgozók",
+    "human":"Dolgozó",
+    "human_new": "Új dolgozó",
+    "human_edit": "Dolgozó szerkesztése",
+    "human_delete": "Dolgozó törlése",
+    
+    "add new": "Új elem",
+    "edit": "Szerkesztés",
+    "save": "Mentés",
+    "create": "Létrehozás",
+    "delete": "Törlés",
+    "cancel":"Mégsem",
+    "choose": "Válassz",
+    
+    "inactive":"Inaktív",
+    "active":"Aktív",
+    "deleted":"Törölt",
+    
+    "delete_success": "törölése sikeresen megtörtént"
+}

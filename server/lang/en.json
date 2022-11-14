@@ -1,0 +1,54 @@
+{
+    "users": "Users",
+    "name": "Name",
+    "functions": "Functions",
+    "contact": "Contact",
+    "profile": "Profile",
+    "change_password": "Change Password",
+    "change": "Change",
+    
+    "currencies": "Currencies",
+    "currency": "Currency",
+    
+    "countries": "Countries",
+    "country": "Country",
+    
+    "login": "Login",
+    "register": "Register",
+    "create account": "Create Account",
+    
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "your email": "Your Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "status": "Status",
+    
+    "companies": "Companies",
+    "company": "Company",
+    "company_new":"New Company",
+    "company_edit":"Edit Company",
+    "company_delete":"Delete Company",
+    
+    "humans":"Humans",
+    "human":"Human",
+    "human_new": "New Human",
+    "human_edit": "Edit Human",
+    "human_delete": "Delete Human",
+    
+    "add new": "Add New",
+    "edit": "Edit",
+    "save": "Save",
+    "create": "Create",
+    "delete": "Delete",
+    "cancel":"Cancel",
+    "choose": "Choose",
+    
+    "inactive":"Inactive",
+    "active":"Active",
+    "deleted":"Deleted",
+    
+    "delete_success": "has been successfully deleted"
+    
+}

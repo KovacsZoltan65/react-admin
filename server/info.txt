@@ -1,0 +1,40 @@
+https://preview.tabler.io/index.html
+https://tabler-icons.io/
+https://github.com/tabler/tabler
+
+https://github.com/thecodeholic/php-mvc-framework
+https://github.com/thecodeholic/tc-php-mvc-core
+
+https://getbootstrap.com/docs/4.6/getting-started/introduction/
+
+https://icons.getbootstrap.com/
+http://download.geonames.org/export/zip/
+
+https://startbootstrap.com/themes/sb-admin-2/
+https://startbootstrap.com/previews/sb-admin-2/
+
+https://fontawesome.com/v5.15/icons
+
+https://github.com/AlexChittock/JQuery-Session-Plugin
+https://www.npmjs.com/package/jquery.session
+
+https://bootstrapious.com/p/bootstrap-divider
+
+A public könyvtárból kell indítani
+php -S localhost:8080
+
+composer require vlucas/phpdotenv
+
+php migrations.php
+
+git első feltöltés
+
+git init
+git status
+git add .
+git status
+git commit -m "Initial commit"
+git remote add origin https://github.com/KovacsZoltan65/php-mvc-framework.git
+git push origin master
+
+packagist publikáció

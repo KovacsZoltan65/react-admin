@@ -1,0 +1,20 @@
+{
+  "name": "kzoltan/mvc_framework",
+  "authors": [
+    {
+      "name": "Kovács Zoltán",
+      "email": "zoltan1_kovacs@msn.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "require": {
+    "php": "^7.4|^8.0",
+    "vlucas/phpdotenv": "^5.4",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  }
+}
