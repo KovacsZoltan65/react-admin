@@ -181,8 +181,12 @@ abstract class DbModel extends Model
         $statement = self::prepare($sql);
         // Futtatás
         $statement->execute();
+        
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+        //$result = $statement->fetchAll(PDO::FETCH_CLASS);
+        
         // Eredményhalmaz osztállyá alakítás, és visszaküldés
-        return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+        return $result;
     }
 
     /**
@@ -191,7 +195,7 @@ abstract class DbModel extends Model
      * @param string $sql Lekérdezés
      * @return \PDOStatement|false
      */
-    public static function prepare(string $sql): \PDOStatement|false
+    public static function prepare(string $sql)
     {
         return Application::$app->db->pdo->prepare($sql);
     }

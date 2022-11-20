@@ -7,14 +7,14 @@
  * @version 1.0
  */
 
-use app\controllers\AuthController;
-use app\controllers\CompanyController;
-use app\controllers\CurrencyController;
-use app\controllers\HumanController;
-use app\controllers\SiteController;
-use app\controllers\UserController;
+//use app\controllers\AuthController;
+//use app\controllers\CompanyController;
+//use app\controllers\CurrencyController;
+//use app\controllers\HumanController;
+//use app\controllers\SiteController;
+//use app\controllers\UserController;
 use app\core\Application;
-use app\models\User;
+//use app\models\User;
 use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -38,6 +38,26 @@ $app = new Application(dirname(__DIR__), $config);
 // --------------------------
 // ROUTE -OK
 // --------------------------
+
+// ============================
+// Login és Register
+// ============================
+$app->router->post('/api/login', [\app\controllers\AuthController::class, 'login']);
+$app->router->post('/api/register', [\app\controllers\AuthController::class, 'register']);
+
+// ============================
+// Cég adatok kezelése
+// ============================
+$app->router->get('/api/companies', [app\controllers\CompanyController::class, 'getCompanies']);
+$app->router->get('/api/company/{id}', [app\controllers\CompanyController::class, 'getCompany']);
+
+// ============================
+// Ország adatok kezelése
+// ============================
+$app->router->get('/api/countries', [app\controllers\CountryController::class, 'getCountries']);
+$app->router->get('/api/country/{id}', [app\controllers\CountryController::class, 'getCountry']);
+
+/*
 $app->router->get('/', [SiteController::class, 'home']);
 
 $app->router->get('/login', [AuthController::class, 'login']);
@@ -102,6 +122,6 @@ $app->router->post('/currency_delete/{id}', [CurrencyController::class, 'currenc
 $app->router->get('/humans', [HumanController::class, 'humans']);
 $app->router->get('/human_new', [HumanController::class, 'human_new']);
 $app->router->get('/human_edit/{id}', [HumanController::class, 'human_edit']);
-
+*/
 
 $app->run();

@@ -83,9 +83,20 @@ class Request
         
         if( $this->isPost() )
         {
-            foreach($_POST as $key => $value)
+            if( count($_POST) > 0 )
             {
-                $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                foreach($_POST as $key => $value)
+                {
+                    $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
+            }
+            else
+            {
+                $request = json_decode(file_get_contents('php://input'), true);
+                foreach($request as $key => $value)
+                {
+                    $body[$key] = $value;
+                }
             }
         }
         

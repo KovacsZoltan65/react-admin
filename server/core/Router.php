@@ -92,6 +92,17 @@ class Router
             $callback[0] = $controller;
         }
         
+        header('Content-Type: application/json; charset=utf-8;');
+        
+        header("Access-Control-Allow-Origin: *");
+        //header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+        
+        header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+        
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+        //header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        
+
         return call_user_func($callback, $this->request, $this->response);
         
 //        $path = $this->request->getPath();

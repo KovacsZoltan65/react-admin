@@ -27,12 +27,10 @@ class CountryController extends Controller
         $this->registerMiddleware(new AuthMiddleware(['countries']));
     }
     
-    public function countries(Request $request, Response $response)
+    public function getCountries()
     {
-        $countries = Country::getAll();
-        
-        $this->setLayout('main');
-        return $this->render('countries/countries', ['countries' => $countries]);
+        $result = json_encode(Country::getAll());
+        return $result;
     }
     
     public function getCountriesToSelect()
@@ -70,5 +68,4 @@ class CountryController extends Controller
     {
         //
     }
-    
 }

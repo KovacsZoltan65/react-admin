@@ -11,12 +11,12 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
-use app\core\Language;
-use app\core\middlewares\AuthMiddleware;
+//use app\core\Language;
+//use app\core\middlewares\AuthMiddleware;
 use app\core\Request;
 use app\core\Response;
-use app\models\LoginForm;
-use app\models\User;
+//use app\models\LoginForm;
+//use app\models\User;
 
 
 /**
@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function __construct()
     {
         // Autentákíciós középréteg registrálása
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
+        //$this->registerMiddleware(new AuthMiddleware(['profile']));
     }
     
     /**
@@ -46,6 +46,32 @@ class AuthController extends Controller
      */
     public function login(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        
+        $res = [
+            'login' => true,
+            'msg' => 'Logged In',
+            'role' => 'admin',
+            'rolePermissios' => [
+                ['admin' => 'view_all_employees'],
+                ['admin' => 'manage_all_employees']
+            ],
+            'token' => $this->getToken(64),
+            'user' => [
+                          'id' => 16,
+                       'email' => $body['email'],
+                        'name' => 'Kovács Zoltán',
+                    'password' => $body['password'],
+                'phone_number' => '+36205311070',
+                  'country_id' => 348,
+                     'lang_id' => 348,
+                      'status' => 1,
+        ],
+        ];
+        
+        return json_encode($res);
+        
+        /*
         $loginForm = new LoginForm();
         if($request->isPost())
         {
@@ -67,6 +93,7 @@ class AuthController extends Controller
             'register_title' => Language::trans('register'),
                      'model' => $loginForm,
         ]);
+        */
     }
    
     /**
@@ -78,6 +105,31 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        $body = $request->getBody();
+        
+        $res = [
+            'login' => true,
+            'msg' => 'Registered',
+            'role' => 'admin',
+            'rolePermissios' => [
+                ['admin' => 'view_all_employees'],
+                ['admin' => 'manage_all_employees']
+            ],
+            'token' => $this->getToken(64),
+            'user' => [
+                          'id' => 16,
+                       'email' => $body['email'],
+                        'name' => 'Kovács Zoltán',
+                    'password' => $body['password'],
+                'phone_number' => '+36205311070',
+                  'country_id' => 348,
+                     'lang_id' => 348,
+                      'status' => 1,
+        ],
+        ];
+        
+        return json_encode($res);
+        /*
         $user = new User();
         
         if($request->isPost())
@@ -103,10 +155,12 @@ class AuthController extends Controller
             'register_title' => $register_title,
             'login_title' => Language::trans('login'),
         ]);
+        */
     }
     
     public function change_password(Request $request, Response $response)
     {
+        /*
         $user = new User();
         
         if( $request->isPost() )
@@ -128,7 +182,7 @@ class AuthController extends Controller
             
             //$user->password_change();
         }
-        
+        */
     }
     
     /**
@@ -148,6 +202,7 @@ class AuthController extends Controller
      */
     public function profile(Request $request, Response $response)
     {
+        /*
         $user = User::findOne(['id' => Application::$app->session->get('user')]);
         
         if( $request->isPost() )
@@ -166,5 +221,44 @@ class AuthController extends Controller
             'change' => Language::trans('change'),
             'change_password' => $change_title,
         ]);
+        */
     }
+    
+    private function crypto_rand_secure(int $min,int $max)
+    {
+        $range = $max - $min;
+        if( $range < 1 )
+        {
+            return $min;
+        }
+        
+        $log = ceil(log($range, 2));
+        $bytes = (int)($log / 8) + 1;       // length in bytes
+        $bits = (int) $log + 1;             // length in bits
+        $filter = (int) (1 << $bits) - 1;   // set all lower bits to 1
+        do
+        {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter;          // discard irrelevant bits
+        } while( $rnd > $range );
+        
+        return $min + $rnd;
+    }
+    
+    private function getToken(int $length): string
+    {
+        $token = '';
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet);
+        
+        for( $i = 0; $i < $length; $i++ )
+        {
+            $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max - 1)];
+        }
+        
+        return $token;
+    }
+    
 }

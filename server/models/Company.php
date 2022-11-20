@@ -30,14 +30,7 @@ class Company extends DbModel
     
     public function __construct()
     {
-        //$this->mod_u_id = $_SESSION['user'];
         parent::__construct();
-        /*
-        foreach( $this->attributes() as $attribute)
-        {
-            $this->$attribute;
-        }
-        */
     }
     
     public function save(): bool

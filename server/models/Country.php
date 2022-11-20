@@ -19,7 +19,7 @@ use app\core\db\DbModel;
 class Country extends DbModel
 {
     public int $id = 0,
-        $vat_region,
+        $vat_region = 0,
         $in_select = self::INT_FALSE,
         $status = self::STATUS_ACTIVE;
     public string $lang_hu = '',
