@@ -92,50 +92,13 @@ class Router
             $callback[0] = $controller;
         }
         
+        // Válasz fejlécének beállítása
         header('Content-Type: application/json; charset=utf-8;');
-        
-        header("Access-Control-Allow-Origin: *");
-        //header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-        
+        header("Access-Control-Allow-Origin: *");        
         header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-        
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-        //header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
         
-
         return call_user_func($callback, $this->request, $this->response);
-        
-//        $path = $this->request->getPath();
-//        $method = $this->request->getMethod();
-//        $callback = $this->routes[$method][$path] ?? false;
-//        
-//        if( !$callback )
-//        {
-//            $callback = $this->getCallback();
-//            throw new NotFoundException();
-//        }
-//        
-//        if( is_string($callback) )
-//        {
-//            return Application::$app->view->renderView($callback);
-//        }
-//        
-//        if( is_array($callback) )
-//        {
-//            /** @var Controller $controller */
-//            
-//            $controller = new $callback[0]();
-//            Application::$app->controller = $controller;
-//            $controller->action = $callback[1];
-//            $callback[0] = $controller;
-//            
-//            foreach( $controller->getMiddlewares() as $middleware )
-//            {
-//                $middleware->execute();
-//            }
-//        }
-//        
-//        return call_user_func($callback, $this->request, $this->response);
         
     }
     
